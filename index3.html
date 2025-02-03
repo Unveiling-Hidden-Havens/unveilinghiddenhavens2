@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unveiling Hidden Havens</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #FFFAE3; /* Friendly warm background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 30px;
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: slideUp 1.5s ease-out;
+            text-align: center;
+        }
+
+        h1 {
+            color: #FF6347;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #FF4500;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button-section {
+            margin-top: 40px;
+        }
+
+        .back-link {
+            font-weight: bold;
+            color: #FF6347;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #FF4500;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unveiling Hidden Havens</h1>
+        <h2>Breteau Index Calculator</h2>
+
+        <div>
+            <label for="houses-inspected">Houses Inspected:</label>
+            <input type="number" id="houses-inspected" required>
+        </div>
+
+        <div>
+            <label for="positive-containers">Positive Containers:</label>
+            <input type="number" id="positive-containers" required>
+        </div>
+
+        <div class="button-section">
+            <button id="calculate-btn" onclick="calculateIndex()">Calculate Breteau Index</button>
+        </div>
+
+        <footer>
+            <a href="result.html" id="result-link" class="back-link" style="display:none;">Go to Result Page</a>
+        </footer>
+    </div>
+
+    <script>
+        // Function to calculate the Breteau Index
+        function calculateIndex() {
+            let housesInspected = parseFloat(document.getElementById('houses-inspected').value);
+            let positiveContainers = parseFloat(document.getElementById('positive-containers').value);
+            let resultLink = document.getElementById('result-link');
+
+            // Validate input
+            if (!isNaN(housesInspected) && !isNaN(positiveContainers) && housesInspected > 0) {
+                let index = (positiveContainers / housesInspected) * 100;
+                localStorage.setItem('breteauIndex', index.toFixed(2)); // Store the result in localStorage
+
+                // Show the result link
+                resultLink.style.display = 'block'; 
+            } else {
+                alert("Please enter valid values.");
+            }
+        }
+    </script>
+</body>
+</html>

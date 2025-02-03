@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breteau Index Result</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #FFFAE3; /* Friendly warm background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #FF6347; /* Warm red tone */
+        }
+
+        h2 {
+            color: #FF4500; /* Darker warm tone */
+        }
+
+        .result-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: #FF6347;
+            margin-top: 30px;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #FFFAE3; /* Same as background color */
+        }
+
+        footer a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #FF6347;
+            font-size: 18px;
+        }
+
+        footer a:hover {
+            color: #FF4500;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unveiling Hidden Havens</h1>
+        <h2>Breteau Index Calculation Result</h2>
+
+        <!-- Display the Breteau Index Result -->
+        <div class="result-value" id="index-result">Loading...</div>
+
+        <!-- Back Link -->
+        <footer>
+            <a href="index.html">Go Back to Input Page</a>
+        </footer>
+    </div>
+
+    <script>
+        // Retrieve the Breteau Index value from localStorage
+        const index = localStorage.getItem('breteauIndex');
+
+        // Display the result or a message if no result is found
+        if (index) {
+            document.getElementById('index-result').textContent = `Breteau Index: ${index}`;
+        } else {
+            document.getElementById('index-result').textContent = 'No data available. Please calculate the index on the input page first.';
+        }
+    </script>
+</body>
+</html>
